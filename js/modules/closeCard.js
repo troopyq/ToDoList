@@ -7,12 +7,14 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
   let scrollWindow = calcScroll()
   let widthWindow = {}
   widthWindow.w = document.body.offsetWidth + scrollWindow
-  console.log(widthWindow.w)
+  let mobile = widthWindow.w < 840 ? true : false;
+
   window.addEventListener('resize', () => {
     widthWindow.w = document.body.offsetWidth + scrollWindow
-    console.log(widthWindow.w)
+    mobile = widthWindow.w < 840 ? true : false;
   })
-  let mobile = widthWindow.w < 840 ? true : false;
+
+  mobile = widthWindow.w < 840 ? true : false;
 
   function getSupportedPropertyName(properties) {
     for (let i = 0; i < properties.length; i++) {
@@ -22,7 +24,6 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
     }
     return null;
   }
-
 
   let transform = ["transform",
                    "msTransform",
@@ -37,6 +38,7 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
 
     const del = document.querySelectorAll(selector);
 
+
     del.forEach((item, id) => {
       const target = e.target
       
@@ -46,43 +48,42 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
         
         let h = {}
         h.tBlock = block.offsetTop
-        h.diff = difference(block, id, del, true)
+        h.diff = difference(block, id, del, mobile)
 
         block.classList.add('closeAnim')
         block.style.animationDuration = `${animTime}s`
 
 
-
         if (!mobile) {
-          for (let i = del.length - 1; i > id; i--) {
+
+          for (let i = id + 1; i < del.length; i++) {
             let it = del[i].closest('.block')
             let prev = del[i - 1].closest('.block')
             let tPrev = prev.offsetTop
 
             let prop = {}
-            prop.ofLeft = 0
-            prop.ofTop = 0
 
             prop.prevTop = prev.offsetTop
             prop.prevLeft = prev.offsetLeft
             prop.itTop = it.offsetTop
             prop.itLeft = it.offsetLeft
+         
+            prop.ofLeft = prop.itLeft - prop.prevLeft
+            
+            if (prop.itTop !== prop.prevTop) {
+              prop.ofTop = prop.itTop - prop.prevTop
+            } else {
+              prop.ofTop = 0
+            }
 
-            if (prop.itLeft <= prop.prevLeft) {
-              prop.ofLeft += -(prop.prevLeft - prop.itLeft)
-            } else {
-              prop.ofLeft += prop.itLeft - prop.prevLeft
-            }
-            if (prop.itTop >= prop.prevTop) {
-              prop.ofTop += prop.itTop - prop.prevTop
-            } else {
-              prop.ofTop += 0
-            }
 
             if (transformProperty) {
               it.style.transition = `transform ${transTime}s ease-in-out`
-              it.style[transformProperty] = `translate3d(${-prop.ofLeft}px, ${h.tBlock !== tPrev ? -(prop.ofTop + h.diff) : -(prop.ofTop)}px, 0px)`
-
+              it.style[transformProperty] = `translate3d(${-prop.ofLeft}px,
+                                             ${h.tBlock !== tPrev ? -(prop.ofTop + h.diff) : -(prop.ofTop)}px,
+                                              0px)
+                                               `
+          
             }
 
           }
@@ -94,11 +95,11 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
             if (transformProperty) {
               it.style.transition = `transform ${transTime}s ease-in-out`
               it.style[transformProperty] = `translate3d(0px, ${-(h.diff)}px, 0px)`
+              
             }
           }
 
         }
-
 
 
         block.addEventListener('animationend', () => {
@@ -117,9 +118,9 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
             let i = id + 1
 
             if (i2 != i) {
-              card.style.order = `${i - 1}`
 
               if (transformProperty) {
+                card.style.zIndex = '2'
                 card.style.transition = 'none'
                 card.style[transformProperty] = `translate3d(0px, 0px, 0px)`
 
@@ -134,7 +135,18 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
 
         }, transTime*1000 - 10);
       }
+
+
+      setTimeout(() => {
+
+        let card = item.closest('.block');
+        card.style.order = `${id + 1}`
+
+
+      }, transTime * 1000 - 10);
+
     })
+
 
   })
 

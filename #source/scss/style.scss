@@ -60,9 +60,13 @@ body{
 }
 
 header{
-  position: relative;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
   padding: 20px 0 10px 0;
-  margin-bottom: 40px;
+  background-color: $color_bg;
 }
 header .row{
   justify-content: space-between;
@@ -97,7 +101,12 @@ header .row{
 
 }
 
-
+main {
+  // position: relative;
+  // left: 0;
+  // top: 110px;
+  margin-top: 110px;;
+}
 
 main .row{
   
@@ -127,6 +136,8 @@ header .row:after{
   }
 }
 .block {
+  position: relative;
+  z-index: 2;
   display: flex;
   padding: 20px 15px;
   flex: 0 0 33.3333%;
@@ -184,6 +195,7 @@ header .row:after{
       padding:0 15px 10px 0;
       margin: 15px 0 15px 0;
       border-bottom: 2px solid $color_dark;
+
     }
     &__list{
       li{
@@ -256,6 +268,15 @@ header .row:after{
         &:active{
           box-shadow: 0 2px 1px 0 darken($color_red, 13);
         }
+        &-active{
+          background-color: $color_yellow;
+          &:hover{
+          background-color: darken($color_yellow, 7);
+          }
+          &:active{
+          box-shadow: 0 2px 1px 0 darken($color_yellow, 13);
+          
+        }
       }
     }
 
@@ -263,6 +284,7 @@ header .row:after{
 }
 
 .item{
+  width: 100%;
   background-color: $color_item;
   padding: 17px 20px;
   border-radius: 17px;
@@ -276,23 +298,101 @@ header .row:after{
   }
 }
 
-
+.item textarea{
+  width: 100%;
+  background-color: transparent;
+  resize: none;
+  overflow: hidden;
+  max-height: 4rem;
+}
 .title{
   h3{
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 1.2;
   }
+  &__input{
+    height: 2.5rem * 1.2;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    background-color: transparent;
+    margin-top: -(2.5rem * 1.3 - 2.5rem);
+    transform: translateY((2.5rem * 1.3 - 2.5rem));
+    
+  }
 }
 .list{
   ol{
-    margin: 5px 15px;
+    margin: 5px 15px 5px 30px;
   }
   li{
     font-size: 1.8rem;
-    padding: 5px 7px 5px 7px;
+    padding: 6px 7px 6px 7px;
     margin: 7px 0 7px 0;
     line-height: 1.25;
+  }
+  li.list__delete{
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    background-color: rgba(226, 15, 15, 0.2);
+    transition: all 0.15s ease-in-out;
+
+    &:hover{
+      background-color: rgba(226, 0, 0, 0.4);
+      list-style-type: none;
+
+    }
+    &:hover:before{
+      content: '';
+      position: absolute;
+      display: inline-block;
+      left: -2.4rem;
+      top: 0.4rem;
+      width: 2rem;
+      height: 2rem;
+      background: url('../img/icons/trash.svg') no-repeat;
+      background-size: cover;
+    }
+  }
+
+  li.list__complete{
+     position: relative;
+    user-select: none;
+    cursor: pointer;
+    background-color: rgba(15, 226, 15, 0.2);
+    transition: all 0.15s ease-in-out;
+
+    &:hover{
+      background-color: rgba(0, 226, 0, 0.4);
+      list-style-type: none;
+
+    }
+    &:hover:before{
+      content: '';
+      position: absolute;
+      display: inline-block;
+      left: -2.4rem;
+      top: 0.4rem;
+      width: 2rem;
+      height: 2rem;
+      background: url('../img/icons/complete.svg') no-repeat;
+      background-size: cover;
+    }
+  }
+
+
+  &__input{
+    margin: 0;
+    padding: 0px !important;
+    font-size: 1.8rem;
+    padding: 5px 7px 5px 7px;
+    line-height: 1.25;
+    background-color: transparent;
+    height: 1.8rem * 1.25;
+    margin-top: -(1.8rem * 1.35 - 1.8rem);
+    transform: translateY((1.8rem * 1.3 - 1.8rem));
   }
 }
 
@@ -309,6 +409,26 @@ header .row:after{
     
     opacity: 0;
   }
+}
+
+@keyframes fadeIn {
+  0%{
+    opacity: 0;
+    transform: translate3d(0px, 15rem, 0px);
+  }
+  70%{
+    opacity: 1;
+  }
+  100%{
+    transform: translate3d(0px, 0rem, 0px);
+  }
+}
+
+.block_fadeIn{
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+
 }
 
 .closeAnim{
@@ -385,14 +505,26 @@ html, body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+@media (min-width: 1100px){
+  html{
+    font-size: 14px;
+  }
+  .block{
+    width: 33.3333%;
+    flex: 0 0 33.3333%;
+  }
+  main .row{
+    margin: 0 auto;
+  }
+}
 
 @media (max-width: 1100px){
   html{
     font-size: 14px;
   }
   .block{
-    width: none;
-    flex: 0 1 50%;
+    width: 50%;
+    flex: 0 0 50%;
   }
   main .row{
     margin: 0 auto;
@@ -410,7 +542,7 @@ html, body {
   }
   .block{
     
-    flex: 0 1 85%;
+    flex: 0 0 85%;
   }
 }
 
