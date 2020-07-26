@@ -1,5 +1,6 @@
 import inputChange from './inputChange.js'
 
+
 const addList = () => {
   
 
@@ -20,20 +21,27 @@ const addList = () => {
         })
 
         let list = btn.closest('.block').querySelector('.list__ol')
+        let isFirstEmpty = false
+        isFirstEmpty = !(list.firstElementChild) ? false : (list.firstElementChild.textContent.length > 0) ? false : true;
+        // console.log(isFirstEmpty)
         let li = document.createElement('li')
         let input = document.createElement('textarea')
         input.className = 'list__input'
-        li.className = 'item__text'
+        li.className = 'item__text li__text list_fadeIn'
         input.setAttribute('placeholder', 'Название дела') 
         input.setAttribute('autofocus', true)
         
 
+        if (!isFirstEmpty){
+          list.append(li)
+          li.append(input)
+          input.focus()
+          inputChange()
+          
+        } else if (list.firstElementChild){
+          list.firstElementChild.firstElementChild.focus()
+        }
         
-        list.append(li)
-
-        li.append(input)
-        input.focus() 
-        inputChange(btn.closest('.block'))
 
       }
 
