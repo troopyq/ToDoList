@@ -27,12 +27,16 @@ const renameList = () => {
 
         item.classList.toggle('item__btn_rename-active')
 
-        text.forEach(target => {
+        // text.forEach(target => {
+        for (let i = 0; i < text.length; i++) {
+          let target = text[i]
 
           if (item.classList.contains('item__btn_rename-active')){
             target.classList.add('text__rename')
           }else {
             target.classList.remove('text__rename')
+            continue;
+            
           }
 
           let click = false
@@ -75,7 +79,8 @@ const renameList = () => {
 
           }
 
-        })
+        // })
+        }
 
       }
 

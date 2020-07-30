@@ -9,6 +9,7 @@
 
 // $color_bg: #b2bec3;
 $color_bg: #eaeaea;
+$color_bg-2: #f9f9f9;
 $color_text: #2d3436;
 $color_dark: #636e72;
 $color_dark-shadow: #636e7250;
@@ -34,20 +35,22 @@ $color_red: #f65314;
 
 
 // ---------------------------
+
 html,body{
   font-size: 10px;
 }
 
 body{
-  
   // background-color: #eaeaef;
   background-color: $color_bg;
   color: $color_text;
   font-family: 'Nunito', sans-serif;
   overflow-x: hidden;
   overflow-y: scroll;
+  padding-right: 15px;
   min-height: 100vh;
-  max-width: 100vw;
+  width: 100%;
+ 
 }
 
 .container{
@@ -67,14 +70,52 @@ header{
   width: 100%;
   left: 0;
   top: 0;
-  z-index: 100;
+  z-index: 9;
   padding: 20px 0 10px 0;
   background-color: $color_bg;
 }
 header .row{
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+.header__btn-log{
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  padding: 15px 20px;
+  color: $color_text;
+  // max-width: 12rem;
+  height: 3rem;
+  border-radius: 15px;
+  background-color: $color_blue;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s, transform 0.1s ease-in, box-shadow 0.1s ease-in;
+
+  box-shadow: 0 2px 5px 0 rgba(32, 33, 36, 0.3);
+
+  &:hover{
+      background-color: darken($color_blue, 7);
+      box-shadow: 0 2px 8px 0 rgba(32, 33, 36, 0.45);
+      // box-shadow: 0 4px 6px $color_dark-shadow, 0 2px 3px $color_dark-shadow;
+  }
+  &:active{
+    background-color: $color_blue;
+    transform: translateY(2px);
+    box-shadow: 0 3px 1px 0 darken($color_blue, 13);
+  }
+}
+
+.profile{
+  width: 10rem;
+}
+
 .btn__add-card{
+  margin-left: 1.5rem;
+  margin-right: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,6 +139,7 @@ header .row{
       // box-shadow: 0 4px 6px $color_dark-shadow, 0 2px 3px $color_dark-shadow;
   }
   &:active{
+    background-color: $color_green;
     transform: translateY(2px);
     box-shadow: 0 3px 1px 0 darken($color_green, 13);
   }
@@ -131,6 +173,7 @@ header .row:after{
 
 .logo{
   margin: 0 20px;
+  margin-right: auto;
   &__span{
     font-family: 'Chewy', cursive;
     font-size: 3.5rem;
@@ -257,6 +300,7 @@ header .row:after{
           background-color: darken($color_green, 7);
         }
         &:active{
+          background-color: $color_green;
           box-shadow: 0 2px 1px 0 darken($color_green, 13);
         }
       }
@@ -272,6 +316,7 @@ header .row:after{
           background-color: darken($color_red, 7);
         }
         &:active{
+           background-color: $color_red;
           box-shadow: 0 2px 1px 0 darken($color_red, 13);
         }
         &-active{
@@ -280,7 +325,8 @@ header .row:after{
           background-color: darken($color_yellow, 7);
           }
           &:active{
-          box-shadow: 0 2px 1px 0 darken($color_yellow, 13);
+            background-color: $color_yellow;
+            box-shadow: 0 2px 1px 0 darken($color_yellow, 13);
           
           }
         }
@@ -297,6 +343,7 @@ header .row:after{
           background-color: darken($color_blue, 7);
         }
         &:active{
+          background-color: $color_blue;
           box-shadow: 0 2px 1px 0 darken($color_blue, 13);
         }
 
@@ -306,7 +353,8 @@ header .row:after{
           background-color: darken($color_yellow, 7);
           }
           &:active{
-          box-shadow: 0 2px 1px 0 darken($color_yellow, 13);
+            background-color: $color_yellow;
+            box-shadow: 0 2px 1px 0 darken($color_yellow, 13);
           
           }
         }
@@ -482,6 +530,249 @@ header .row:after{
   }
 }
 
+
+.profile{
+  position: relative;
+  
+  &__header{
+    visibility: hidden;
+    transition: all 0.3s;
+    // transform: scale3d(0,0,1);
+
+    transform-origin: right top;
+
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: -7rem;
+    top: 5.4rem;
+    width: 30rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid darken($color_bg-2, 7);
+    background-color: $color_bg-2;
+    // box-shadow: 0 6px 15px rgba(0,0,0,0.25), 0 3px 9px rgba(0,0,0,0.35);
+
+    
+  }
+  &__text{
+    display: flex;
+    align-items: center;
+    box-shadow: content-box;
+    font-size: 1.4rem;
+    color: $color_text;
+    padding: 0.7rem;
+    height: 5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.5s;
+    &:hover{
+      background-color: darken($color_bg-2, 7);
+      color: darken($color_text, 50);
+      // text-decoration: underline;
+    }
+  }
+  
+
+  &__login{
+    font-size: 1.5rem;
+  }
+  &__email{
+    font-size: 1.2rem;
+  }
+
+  #logout{
+    display: inline-block;
+    button{
+      background-color: transparent;
+      color: $color_red;
+      margin: 0.2rem 0.2rem;
+      padding: 0.2rem 0.2rem;
+      transition: all 0.25s;
+      &:hover{
+        color: darken($color_red, 17);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+.popup{
+  display: none;
+  overflow-y: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.55);
+
+  &__status{
+    position: absolute;
+    left: 50%;
+    bottom: -3.95rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    // border: 2px solid red;
+    font-size: 1.5rem;
+    background-color: $color_red;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    color: $color_text;
+    transform: translateX(-50%);
+  }
+
+  &__close{
+    user-select: none;
+    cursor: pointer;
+    font-size: 2rem;
+    align-self: flex-end;
+    margin: -1rem 0 0 0;
+    opacity: 0.5;
+    transition: all 0.2s ease-in-out;
+
+    &:hover{
+      opacity: 1;
+    }
+
+
+  }
+
+  &__signin{
+    // display: none;
+  }
+  &__signup{
+    // display: none;
+  }
+
+  &__block{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3rem 2rem 3rem 2rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: #f9f9f9;
+    z-index: 11;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3), 0 7px 17px rgba(0,0,0,0.2);
+  }
+
+  &__form{
+    max-width: 35rem;
+    min-width: 25rem;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  label{
+    user-select: none;
+    cursor: pointer;
+    display: block;
+    font-size: 2rem;
+    color: $color_text;
+    margin: 2rem 0 0.5rem 0;
+    text-align: left;
+    transition: all 0.15s ease-in-out;
+    &:last-child{
+      margin-top: 0;
+    }
+  }
+
+  input+input{
+    margin-bottom: 0.5rem;
+  }
+  input[type="email"]{
+    background-image: none !important;
+  }
+
+  input{
+    display: flex;
+    min-width: 20rem;
+    max-width: 29rem;
+    flex: 1 0 20rem;
+    max-height: 3.5rem;
+    background-color: #f9f9f9;
+    font-size: 1.5rem !important;
+    border: unset;
+    border-bottom: 2px solid #55555580;
+    color: $color_text;
+    padding: 0 0.5rem;
+    transition: all 0.15s ease-in-out;
+
+  }
+  input {outline: none;}
+  input:focus {
+    outline: none;
+    border-color: $color_blue;
+  }
+  input:focus + label{
+    color: $color_blue;
+  }
+
+  input:autofill {
+    box-shadow: inset 0 0 0 50px #f9f9f9 !important; /* Цвет фона */
+    text-fill-color: $color_text !important; /* цвет текста */
+    color: $color_text !important; /* цвет текста */
+  }
+  input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 50px #f9f9f9 !important; /* Цвет фона */
+    -webkit-text-fill-color: $color_text !important; /* цвет текста */
+    color: $color_text !important; /* цвет текста */
+  }
+  button{
+    display: block;
+    width: 20rem;
+    margin: 3rem 0 1rem 0;
+    padding: 0.9rem 0;
+    font-size: 1.8rem;
+    color: $color_text;
+    background-color: $color_blue;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(32, 33, 36, 0.3);
+
+    transition: all 0.15s ease-in, transform 0.1s ease-in, box-shadow 0.1s ease-in-out;
+
+
+    &:hover{
+       background-color: darken($color_blue, 7);
+       box-shadow: 0 2px 8px 0 rgba(32, 33, 36, 0.45);
+
+    }
+    &:active{
+      box-shadow: 0 2px 1px 0 darken($color_blue, 13),
+                  0 2px 8px 0 rgba(32, 33, 36, 0.45);
+      transform: translateY(2px);
+    }
+
+  }
+  
+  &__subtitle{
+    margin-top: 1rem;
+    p{
+      font-size: 1.4rem;
+      color: $color_text;
+    }
+    a{
+      color: $color_blue;
+      transition: all 0.15s ease-in-out;
+      &:hover{
+        color: darken($color_blue, 15);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+
 @keyframes close{
   from{
     opacity: 1;
@@ -537,6 +828,44 @@ header .row:after{
     // transform: translate3d(0px, 0rem, 0px);
      margin-top: -3.5rem;
   }
+}
+
+@keyframes open_profile {
+  0%{
+    opacity: 0;
+    transform: scale3d(0,0,1);
+  }
+
+  40%{
+    opacity: 1;
+    transform: scale3d(0.05,1,1);
+  }
+  50%{
+    transform: scale3d(0.07,1,1);
+  }
+  // 85%{
+  //   transform: scale3d(1,1,1);
+  // }
+  85%{
+    transform: scale3d(1.05,1,1);
+  }
+  100%{
+    transform: scale3d(1,1,1);
+    animation-play-state: paused;
+    opacity: 1;
+  }
+}
+
+.open__profile{
+  visibility: hidden;
+
+  animation-play-state: paused;
+  animation-name: open_profile;
+  animation-duration: 0.7s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+
 }
 
 .list .list_fadeIn{
@@ -676,10 +1005,23 @@ html, body {
   html{
     font-size: 12px;
   }
+  .logo{
+    margin-left: 1rem;
+    &__span{
+      font-size: 2.5rem;
+      
+    }
+  }
   main .row{
     justify-content: center;
   }
   .block{
     flex: 0 0 97%;
+  }
+
+  .profile{
+    &__header{
+      width: 25rem;
+    }
   }
 }

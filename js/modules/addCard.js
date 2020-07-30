@@ -82,13 +82,14 @@ const addCard = (button, where = '.row-cards') => {
     item__btn.insertAdjacentElement("beforeend", item__btn_add)
     parent.append(block)
 
-    scrollToInput(title__input)
+    
 
     title__input.focus()
+    // scrollToInput(title__input)
 
     title__input.onblur = () => {
-      scrollToInput(list__input)
-      list__input.focus()
+      // scrollToInput(list__input)
+      // list__input.focus()
     }
 
     block.classList.add('block_fadeIn')

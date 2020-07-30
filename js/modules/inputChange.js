@@ -10,7 +10,11 @@ const inputChange = () => {
 
     item.addEventListener('keydown', (e) => {
       if (e.key === 'Enter'){
-         e.path[0].blur()
+        console.log(e.path[1])
+        e.path[1].classList.remove('text__rename')
+        e.path[0].blur()
+
+         
       }
 
     })

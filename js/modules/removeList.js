@@ -6,10 +6,7 @@ const removeList = () => {
 
     delBtn.forEach(btn => {
       let lists = btn.closest('.block').querySelectorAll('.list__ol .item__text')
-      console.clear()
-      console.log('tar- ' + target + ' ,  btn- ', +btn+',  delbtn-'+delBtn)
-      console.log(target)
-      console.log(btn)
+
       if (target !== btn && target !== btn.firstElementChild){
         lists.forEach(item => {
           

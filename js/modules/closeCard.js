@@ -79,12 +79,12 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
 
             if (transformProperty) {
               it.style.transition = `transform ${transTime}s ease-in-out`
-              // it.style[transformProperty] = `translate3d(${-prop.ofLeft}px,
-              //                                ${h.tBlock !== tPrev ? -(prop.ofTop + h.diff) : -(prop.ofTop)}px,
-              //                                 0px)`;
-              it.style[transformProperty] = `translate(${-prop.ofLeft}px,
-                                             ${h.tBlock !== tPrev ? -(prop.ofTop + h.diff) : -(prop.ofTop)}px
-                                              )`;
+              it.style[transformProperty] = `translate3d(${-prop.ofLeft}px,
+                                             ${h.tBlock !== tPrev ? -(prop.ofTop + h.diff) : -(prop.ofTop)}px,
+                                              0px)`;
+              // it.style[transformProperty] = `translate(${-prop.ofLeft}px,
+              //                                ${h.tBlock !== tPrev ? -(prop.ofTop + h.diff) : -(prop.ofTop)}px
+              //                                 )`;
           
             }
 
@@ -96,8 +96,8 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
             
             if (transformProperty) {
               it.style.transition = `transform ${transTime}s ease-in-out`
-              // it.style[transformProperty] = `translate3d(0px, ${-(h.diff)}px, 0px)`
-              it.style[transformProperty] = `translate(0px, ${-(h.diff)}px)`
+              it.style[transformProperty] = `translate3d(0px, ${-(h.diff)}px, 0px)`
+              // it.style[transformProperty] = `translate(0px, ${-(h.diff)}px)`
               
             }
           }
@@ -121,8 +121,8 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
               if (transformProperty) {
                 card.style.zIndex = '2'
                 card.style.transition = 'none'
-                // card.style[transformProperty] = `translate3d(0px, 0px, 0px)`
-                card.style[transformProperty] = `translate(0px, 0px)`
+                card.style[transformProperty] = `translate3d(0px, 0px, 0px)`
+                // card.style[transformProperty] = `translate(0px, 0px)`
 
               }
             }
