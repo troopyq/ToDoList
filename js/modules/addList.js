@@ -1,4 +1,5 @@
 import inputChange from './inputChange.js'
+import updateData from './updateData.js';
 
 
 const addList = () => {
@@ -37,6 +38,7 @@ const addList = () => {
           li.append(input)
           input.focus()
           inputChange()
+          updateData()
           
         } else if (list.firstElementChild){
           list.firstElementChild.firstElementChild.focus()

@@ -30,8 +30,11 @@
 		$_SESSION['user'] = [
 			"id" => $user['id'],
 			"email" => $user['email'],
-			"login" => $user['login']
+			"login" => $user['login'],
+			"count" => $user['count']
 		];
+
+		setcookie('user', json_encode($user), time() + 3600 * 24 *30, "/");
 
 		$response = [
 			"status" => true,

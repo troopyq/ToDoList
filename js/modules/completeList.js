@@ -1,3 +1,5 @@
+import updateData from './updateData.js'
+
 const completeList = () => {
   // let list = document.getElementsByClassName('list__complete')
 
@@ -21,6 +23,7 @@ const completeList = () => {
           let liCl = li.classList
           if (liCl.contains('list__complete') && !liCl.contains('text__rename')){
             liCl.toggle('li__complete')
+            updateData()
           }
         }
       })

@@ -82,8 +82,12 @@ const validation = () => {
           .then(res => {
             console.log(res)
             if (res.status){
-              popup.forEach(item => item.style.display = 'none')
-              popup_signin.style.display = 'block'
+              item.closest('.popup__block').appendChild(status)
+              status.textContent = res.message
+              setTimeout(() => {
+                popup.forEach(item => item.style.display = 'none')
+                popup_signin.style.display = 'block'
+              }, 1500);
             } else{
               item.closest('.popup__block').appendChild(status)
               status.textContent = res.message

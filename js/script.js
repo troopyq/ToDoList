@@ -9,6 +9,7 @@ import completeList from '../js/modules/completeList.js';
 import validation from './modules/validation.js';
 import modals from './modules/modals.js';
 import openProfile from './modules/openProfile.js';
+import updateData from './modules/updateData.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,6 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
   modals()
 
   openProfile('.profile .header__btn-log', '.profile__header')
+
+  let updateDataInterval = setInterval(() => {
+
+    updateData()
+
+    
+  }, 1000 * 30 * 1);
 
 
 })

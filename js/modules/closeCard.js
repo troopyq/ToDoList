@@ -1,5 +1,7 @@
 import calcScroll from './calcScroll.js'
 import difference from './difference.js'
+import updateData from './updateData.js'
+
 
 
 const closeCard = (selector, animTime = 1, transTime = 1) => {  
@@ -131,6 +133,7 @@ const closeCard = (selector, animTime = 1, transTime = 1) => {
 
 
           block.remove()
+          updateData()
         
 
         }, transTime*1000 - 10);

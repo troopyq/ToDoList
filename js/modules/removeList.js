@@ -1,3 +1,5 @@
+import updateData from './updateData.js';
+
 const removeList = () => {
 
   document.body.addEventListener('click', e => {
@@ -51,6 +53,7 @@ const removeList = () => {
 
                 setTimeout(() => {
                   li.remove()
+                  updateData()
                   lists.length === 0 ? btn.classList.remove('item__btn_delete-active') : '';
                   // count--
                 }, time * 1000 - 15);

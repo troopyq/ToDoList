@@ -1,4 +1,5 @@
 import completeList from './completeList.js'
+import updateData from './updateData.js'
 
 const inputChange = () => {
   
@@ -10,17 +11,16 @@ const inputChange = () => {
 
     item.addEventListener('keydown', (e) => {
       if (e.key === 'Enter'){
-        console.log(e.path[1])
         e.path[1].classList.remove('text__rename')
         e.path[0].blur()
-
+        updateData()
          
       }
 
     })
 
     item.addEventListener('focus', (e) => {
-      content = e.path[1].textContent
+      content = e.path[1].textContent.trim()
 
       if (content.length > 0) {
         item.value = content
@@ -30,16 +30,16 @@ const inputChange = () => {
     item.addEventListener('blur', (e) => {
 
       let li = e.path[1]
-      let val = e.path[0].value
+      let val = e.path[0].value.trim()
       
 
       // console.log(e.path[0].classList)
       if (val.length >= 1) {
         e.path[0].blur()
-        li.textContent = val
+        li.textContent = val.replace(/\s+\r?\n/g, ' ').trim()
         e.path[0].remove()
         li.classList.add('list__complete')
-        
+        updateData()
         
       } else if (val.length === 0 && e.path[1].classList.contains('li__text') && e.path[2].querySelectorAll('li').length > 1 && li.textContent.length < 1){
         li.classList.add('list_fadeOut')
@@ -48,6 +48,7 @@ const inputChange = () => {
         time = parseFloat(time)
         setTimeout(() => {
           e.path[1].remove()
+          
 
         }, time * 1000 - 15);
       }

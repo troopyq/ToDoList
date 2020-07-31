@@ -58,7 +58,7 @@
 		
 		$password = md5($password) . 'mc4f3g8e2k1';
 
-		mysqli_query($connect, "INSERT INTO `users` (`id`, `email`, `login`, `password`) VALUES (NULL, '$email', '$login', '$password')");
+		mysqli_query($connect, "INSERT INTO `users` (`id`, `email`, `login`, `password`, `data`) VALUES (NULL, '$email', '$login', '$password', NULL)");
 
 		$response = [
 			"status" => true,

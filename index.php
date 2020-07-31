@@ -23,7 +23,7 @@
         <div class="logo"><span class="logo__span">To Do List</span></div>
         
 
-        <? if (!$_SESSION['user']): ?>
+        <?php if (!$_COOKIE['user']): ?>
         <div class="login header__btn-log"><span>Войти</span></div>
         <? else:?>
         <div class="profile">
@@ -50,13 +50,26 @@
     <div class="container">
       <div id="cards" class="row row-cards">
 
-      <? if ($_SESSION['user']): ?>
+          <?php if ($_SESSION['user'] > 0){
+            require_once './vendor/connect.php';
+            require './vendor/getData.php';
+            
+            foreach ($data2 as $key => $value) {
+              // if ($value['title'] !== '' && $value[0]['text'] !== ''):
+
+          ?>
 
         <div class="block block_fadeIn">
           <div class="block__item item">
             <div class="item__title title">
               <h3 class="title__text item__text">
-                <?=  $_SESSION['user']['data']; ?>
+                <?php if (trim($value['title']) === ''){ ?>
+                <textarea class="title__input" placeholder="Название списка" maxlength="90"></textarea>
+                <?php } else{
+                  echo trim($value['title']);
+            }
+                ?>
+                
               </h3>
               <div class="item__header">
                 <span class="item__close item__header-btn">&amp;#8212;</span>
@@ -65,9 +78,37 @@
             </div>
             <div class="item__list list">
               <ol class="list__ol">
-                <li class="item__text li__text list__complete">
-                  <textarea class="list__input" placeholder="Название дела" maxlength="120"></textarea>
+              <?php   foreach ($value['list'] as $key => $value) {
+                 # code...
+                 if ($value['complete']):
+                ?>
+
+                <li class="item__text li__text list__complete li__complete">
+
+                  <?php if (trim($value['text']) === ''){ ?>
+                <textarea class="list__input" placeholder="Название дела" maxlength="90"></textarea>
+                <?php } else{
+                  echo trim($value['text']);
+                   }   
+                ?>
                 </li>
+
+                 <?php else:  ?>
+
+                <li class="item__text li__text list__complete">
+                  <?php if (trim($value['text']) === ''){ ?>
+                <textarea class="list__input" placeholder="Название дела" maxlength="90"></textarea>
+                <?php } else{
+                  echo trim($value['text']);
+                   }   
+                ?>
+                </li>
+
+                <?php
+                  endif;
+                
+                }
+                ?>
               </ol>
             </div>
             <div class="item__btn">
@@ -77,6 +118,11 @@
             </div>
           </div>
         </div>
+        <?php
+            // endif;
+          }
+        }
+         ?>
 
 
 

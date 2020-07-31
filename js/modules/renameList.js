@@ -64,13 +64,15 @@ const renameList = () => {
                 input.setAttribute('maxlength', '90')
               }
 
-              let content = target.textContent
-              console.log(content)
+              let content = target.textContent.replace(/\s+\r?\n/g, ' ').trim()
+              // console.log(content)
               target.innerHTML = ''
 
               target.append(input)
               input.focus()
+              // input.value = (content.replace(/\r?\n/g, "")).trim()
               input.value = content
+
               inputChange()
 
             }
