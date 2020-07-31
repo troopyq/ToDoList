@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  $upd = 6;
+  $upd = 10;
 
   require ('./vendor/autoSignin.php');
 

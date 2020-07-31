@@ -50,11 +50,18 @@ function closeCard (selector, animTime = 1, transTime = 1)  {
         
         let h = {}
         h.tBlock = block.offsetTop
+        h.lblock = block.offsetLeft
+        h.wblock = block.offsetWidth
         h.diff = difference(block, id, del, mobile)
 
         block.classList.add('closeAnim')
         block.style.animationDuration = `${animTime}s`
+        // scrollToInput(del[del.length - 3], 'center')
 
+        if (del.length > 1) {
+          scrollToInput(del[id ], 'center')
+
+        }
 
         if (!mobile) {
 
@@ -79,6 +86,9 @@ function closeCard (selector, animTime = 1, transTime = 1)  {
             }
 
 
+            
+
+
             if (transformProperty) {
               it.style.transition = `transform ${transTime}s ease-in-out`
               // it.style[transformProperty] = `translate3d(${-prop.ofLeft}px,
@@ -94,6 +104,12 @@ function closeCard (selector, animTime = 1, transTime = 1)  {
           }
 
         } else {
+
+          if (del.length > 1) {
+            scrollToInput(del[id], 'end')
+
+          }
+          
           for (let i = del.length - 1; i > id; i--) {
             let it = del[i].closest('.block')
             

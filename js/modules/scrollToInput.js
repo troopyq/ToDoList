@@ -1,7 +1,8 @@
-function scrollToInput (item)  {
+function scrollToInput(item, where = 'start', inline = 'nearest')  {
   item.scrollIntoView({
     behavior: 'smooth',
-    block: 'start'
+    block: where,
+    inline: inline
   })
 }
 

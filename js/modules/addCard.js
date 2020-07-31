@@ -83,9 +83,16 @@ function addCard (button, where = '.row-cards') {
     item__btn.insertAdjacentElement("beforeend", item__btn_add)
     parent.append(block)
 
-    
+    // title__input(block, 'center')
 
-    title__input.focus()
+    
+    let count = document.querySelectorAll('.block').length
+    block.style.order = `${count}`
+    scrollToInput(title__input, 'center')
+
+    // setTimeout(() => {
+    //   title__input.focus()
+    // }, 650);
     // scrollToInput(title__input)
 
     title__input.onblur = () => {
@@ -96,8 +103,6 @@ function addCard (button, where = '.row-cards') {
     block.classList.add('block_fadeIn')
     // block.style.animationDuration = `1s`
 
-    let count = document.querySelectorAll('.block').length
-    block.style.order = `${count}`
 
 
     return ''

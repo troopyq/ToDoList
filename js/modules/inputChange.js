@@ -21,12 +21,12 @@ function inputChange ()  {
 
     item.addEventListener('focus', (e) => {
       content = e.path[1].textContent.trim()
-
+      // scrollToInput(e.path[0], 'center')
       if (content.length > 0) {
         item.value = content
       }
     })
-
+    
     item.addEventListener('blur', (e) => {
 
       let li = e.path[1]

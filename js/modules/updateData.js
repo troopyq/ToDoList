@@ -51,13 +51,13 @@ function updateData ()  {
         title: title,
         list: listValue
       } 
-      console.log(title.length)
-      console.log(isLi)
+      // console.log(title.length)
+      // console.log(isLi)
 
       if (title.length > 0 || isLi){
         dataForm.push(info)
       } else {
-        console.log('dont push')
+        // console.log('dont push')
       }
 
     })
