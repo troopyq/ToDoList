@@ -1,4 +1,4 @@
-const validation = () => {
+function validation ()  {
   let formSignin = document.querySelector('#signin')
   let formSignup = document.querySelector('#signup')
   let popup = document.querySelectorAll('.popup')
@@ -134,4 +134,4 @@ const validation = () => {
 
 }
 
-export default validation
+// export default validation

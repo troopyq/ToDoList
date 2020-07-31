@@ -1,7 +1,7 @@
-import inputChange from "./inputChange.js"
-// import completeList from './completeList.js'
+// import inputChange from "./inputChange.js"
+// // import completeList from './completeList.js'
 
-const renameList = () => {
+function renameList ()  {
 
   document.body.addEventListener('click', (e) => {
     let tar = e.target
@@ -94,4 +94,4 @@ const renameList = () => {
 
 }
 
-export default renameList
+// export default renameList

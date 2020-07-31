@@ -1,6 +1,6 @@
-import updateData from './updateData.js'
+// import updateData from './updateData.js'
 
-const completeList = () => {
+function completeList ()  {
   // let list = document.getElementsByClassName('list__complete')
 
   // for (let li of list){
@@ -33,4 +33,4 @@ const completeList = () => {
 
 }
 
-export default completeList
+// export default completeList

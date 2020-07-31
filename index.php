@@ -1,5 +1,8 @@
 <?php 
   session_start();
+  $upd = 6;
+
+  require ('./vendor/autoSignin.php');
 
 ?>
 
@@ -7,6 +10,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="favicon.ico">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width,
                                     initial-scale=1,
@@ -14,33 +18,43 @@
                                       user-scalable=0,
                                        shrink-to-fit=no">
   <title>To Do List</title>
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=<?= $upd?>">
 </head>
 <body>
+
+  <?php if ($_COOKIE['user'] !== ''): ?>
+<div class="profile">
+  <div class="profile__header">
+    <span class="profile__login profile__text isButton">
+    <div class="profile__img"><img src="" alt=""></div>
+              <?= $_SESSION['user']['login']?></span>
+    <span class="profile__email profile__text isButton"><?= $_SESSION['user']['email']?></span>
+    <form id="logout" action="vendor/logout.php">
+    <button class="profile__text isButton" type="submit">Выход</button>
+    </form>
+  </div>
+</div>
+
+ <?php endif; ?>
+
+
   <header>
     <div class="container">
       <div class="row">
         <div class="logo"><span class="logo__span">To Do List</span></div>
+
+ 
         
 
-        <?php if (!$_COOKIE['user']): ?>
-        <div class="login header__btn-log"><span>Войти</span></div>
+        <?php if ($_COOKIE['user'] == ''): ?>
+        <div class="login header__btn-log isButton"><span>Войти</span></div>
         <? else:?>
-        <div class="profile">
-          <span class="header__btn-log">Профиль</span>
-          <div class="profile__header open__profile">
-            <span class="profile__login profile__text">
-              <div class="profile__img"><img src="" alt=""></div>
-              <?= $_SESSION['user']['login']?></span>
-            <span class="profile__email profile__text"><?= $_SESSION['user']['email']?></span>
-            <form id="logout" action="vendor/logout.php">
-              <button class="profile__text" type="submit">Выход</button>
-            </form>
-          </div>
+        <div class="profile-btn">
+          <span class="header__btn-log isButton">Профиль</span>
         </div>
         <? endif;?>
 
-        <div class="btn__add-card">+</div>
+        <div class="btn__add-card isButton">+</div>
 
       </div>
     </div>
@@ -50,7 +64,7 @@
     <div class="container">
       <div id="cards" class="row row-cards">
 
-          <?php if ($_SESSION['user'] > 0){
+          <?php if ($_SESSION['user']['id']){
             require_once './vendor/connect.php';
             require './vendor/getData.php';
             
@@ -121,9 +135,16 @@
         <?php
             // endif;
           }
-        }
+        } else{
          ?>
 
+          <div class="cards__title">
+            <p>Авторизируйтесь, чтобы записи сохранились</p><br>
+            <p>Чтобы создать новый список, нажмите на "+" сверху</p>
+          </div>
+
+
+        <?php }  ?>
 
 
 
@@ -169,8 +190,23 @@
       </div>
     </div>
   </div>
+  
+  <script src="./js/modules/scrollToInput.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/updateData.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/difference.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/calcScroll.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/closeCard.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/addCard.js?v=<?= $upd?>" ></script> 
+  <script src="./js/modules/inputChange.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/addList.js?v=<?= $upd?>"></script>
+  <script src="./js/modules/removeList.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/renameList.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/completeList.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/validation.js?v=<?= $upd?>"></script>
+  <script src="./js/modules/modals.js?v=<?= $upd?>" ></script>
+  <script src="./js/modules/openProfile.js?v=<?= $upd?>" ></script>
 
-  <script src="js/script.js?v=3" type='module'></script>
+  <script src="js/script.js?v=<?= $upd?>"></script>
 
 </body>
 </html>

@@ -2,7 +2,6 @@
 	session_start();
 	require_once 'connect.php';
 
-	// $_POST = json_decode(file_get_contents("php://input"), true);
 
 	$login = trim($_POST['login']);
 	$email = trim($_POST['email']);
@@ -36,8 +35,7 @@
 
 			echo json_encode($response);
 
-			// $_SESSION['message'] = 'Пользователь с таким логином уже существует';
-			// header('Location: ../registration.php');
+
 			exit();
 
 		}elseif ($user['email'] === $email){
@@ -49,8 +47,6 @@
 
 			echo json_encode($response);
 
-			// $_SESSION['message'] = 'Пользователь с такой почтой уже существует';
-			// header('Location: ../registration.php');
 			exit();
 		}
 		
@@ -58,7 +54,7 @@
 		
 		$password = md5($password) . 'mc4f3g8e2k1';
 
-		mysqli_query($connect, "INSERT INTO `users` (`id`, `email`, `login`, `password`, `data`) VALUES (NULL, '$email', '$login', '$password', NULL)");
+		mysqli_query($connect, "INSERT INTO `todolist_users` (`id`, `email`, `login`, `password`, `data`) VALUES (NULL, '$email', '$login', '$password', NULL)");
 
 		$response = [
 			"status" => true,
@@ -67,8 +63,6 @@
 
 		echo json_encode($response);
 
-		// $_SESSION['message'] = 'Регистрация прошла успешно';
-		// header('Location: ../index.php');
 
 	} else{
 		$response = [
@@ -78,8 +72,6 @@
 
 		echo json_encode($response);
 
-		// $_SESSION['message'] = 'Пароли не совпадают';
-		// header('Location: ../registration.php');
 		
 	}
 

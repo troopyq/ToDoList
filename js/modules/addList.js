@@ -1,8 +1,8 @@
-import inputChange from './inputChange.js'
-import updateData from './updateData.js';
+// import inputChange from './inputChange.js'
+// import updateData from './updateData.js';
 
 
-const addList = () => {
+function addList ()  {
   
 
 
@@ -55,4 +55,4 @@ const addList = () => {
 
 }
 
-export default addList
+// export default addList

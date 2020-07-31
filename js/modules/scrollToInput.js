@@ -1,8 +1,8 @@
-const scrollToInput = (item) => {
+function scrollToInput (item)  {
   item.scrollIntoView({
     behavior: 'smooth',
     block: 'start'
   })
 }
 
-export default scrollToInput
+// export default scrollToInput

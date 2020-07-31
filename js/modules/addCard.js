@@ -1,10 +1,10 @@
-import inputChange from './inputChange.js'
-import scrollToInput from './scrollToInput.js'
+// import inputChange from './inputChange.js'
+// import scrollToInput from './scrollToInput.js'
 
 
 
 
-const addCard = (button, where = '.row-cards') => {
+function addCard (button, where = '.row-cards') {
   
   const btn = document.querySelector(button)
 
@@ -49,9 +49,9 @@ const addCard = (button, where = '.row-cards') => {
     title__input.setAttribute('placeholder', 'Название списка')
     title__input.setAttribute('maxlength', '80')
     item__header.className = 'item__header'
-    item__close.className = 'item__close item__header-btn'
+    item__close.className = 'item__close item__header-btn isButton'
     item__close.textContent = '&#8212;'
-    item__delete.className = 'item__delete item__header-btn'
+    item__delete.className = 'item__delete item__header-btn isButton'
     item__delete.innerHTML = '&#10006;'
     list.className = 'item__list list'
     li.className = 'item__text li__text'
@@ -59,12 +59,12 @@ const addCard = (button, where = '.row-cards') => {
     list__input.className = 'list__input'
     list__input.setAttribute('placeholder', 'Название дела')
     list__input.setAttribute('maxlength', '120')
-    item__btn.className = 'item__btn'
-    item__btn_delete.className = 'item__btn_delete item__btn_style'
+    item__btn.className = 'item__btn isButton'
+    item__btn_delete.className = 'item__btn_delete item__btn_style isButton'
     item__btn_delete.innerHTML = '<p>--</p>'
-    item__btn_add.className = 'item__btn_add item__btn_style'
+    item__btn_add.className = 'item__btn_add item__btn_style isButton'
     item__btn_add.innerHTML = '<p>+</p>'
-    item__btn_rename.className = 'item__btn_rename item__btn_style'
+    item__btn_rename.className = 'item__btn_rename item__btn_style isButton'
 
     block.insertAdjacentElement("beforeend", item)
     h3.insertAdjacentElement("beforeend", title__input)
@@ -106,4 +106,4 @@ const addCard = (button, where = '.row-cards') => {
 
 }
 
-export default addCard
+// export default addCard

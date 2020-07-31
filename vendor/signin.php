@@ -20,7 +20,7 @@
 
 	$password = md5($password) . 'mc4f3g8e2k1';
 
-	$check_user = mysqli_query($connect, "SELECT * FROM `users` WHERE (`email` = '$login' OR `login` = '$login') AND `password` = '$password'");
+	$check_user = mysqli_query($connect, "SELECT * FROM `todolist_users` WHERE (`email` = '$login' OR `login` = '$login') AND `password` = '$password'");
 
 
 	if (mysqli_num_rows($check_user) > 0) {
@@ -30,11 +30,10 @@
 		$_SESSION['user'] = [
 			"id" => $user['id'],
 			"email" => $user['email'],
-			"login" => $user['login'],
-			"count" => $user['count']
+			"login" => $user['login']
 		];
 
-		setcookie('user', json_encode($user), time() + 3600 * 24 *30, "/");
+		setcookie('user', $_SESSION['user']['id'], time() + 3600 * 24 * 30, "/");
 
 		$response = [
 			"status" => true,
@@ -43,17 +42,17 @@
 
 		echo json_encode($response);
 
-		// header('Location: ../index.php');
+		
 
 	} else {
-		// $_SESSION['message'] = 'Неверный логин или пароль';
+
 		$response = [
 			"status" => false,
 			"message" => 'Неверный логин или пароль'
 		];
 
 		echo json_encode($response);
-		// header('Location: ../index.php');
+
 	}
  ?>
 

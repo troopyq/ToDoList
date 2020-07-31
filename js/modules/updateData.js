@@ -1,8 +1,8 @@
-const updateData = () => {
+function updateData ()  {
 
   const currentCards = cards.querySelectorAll('.block')
 
-  if (currentCards.length > 0){
+  if (currentCards.length >= 0){
 
     const message = {
       loading: 'Загрузка...',
@@ -94,4 +94,4 @@ const updateData = () => {
 
 }
 
-export default updateData
+// export default updateData

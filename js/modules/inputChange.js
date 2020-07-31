@@ -1,7 +1,7 @@
-import completeList from './completeList.js'
-import updateData from './updateData.js'
+// import completeList from './completeList.js'
+// import updateData from './updateData.js'
 
-const inputChange = () => {
+function inputChange ()  {
   
   let cards = document.querySelector('.row-cards')
   let inputs = cards.getElementsByTagName('textarea')
@@ -62,4 +62,4 @@ const inputChange = () => {
 
 }
 
-export default inputChange
+// export default inputChange

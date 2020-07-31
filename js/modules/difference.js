@@ -1,4 +1,4 @@
-const difference = (target, tId, arrBlocks, mobile = false) => {
+function difference (target, tId, arrBlocks, mobile = false)  {
   let h = {}
   let valHeights = []
   let heightBottom = []
@@ -51,7 +51,7 @@ const difference = (target, tId, arrBlocks, mobile = false) => {
 // если в массиве высот пусто, проверяем мобильную версию, и возвращаем разницу по условию
   if (valHeights.length === 0){
     if (mobile){
-      console.log('val 0, targetH - ' + h.hTarget)
+      // console.log('val 0, targetH - ' + h.hTarget)
       return h.hTarget
     }
     return 0
@@ -100,4 +100,4 @@ const difference = (target, tId, arrBlocks, mobile = false) => {
 
 }
 
-export default difference
+// export default difference

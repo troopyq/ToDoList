@@ -1,4 +1,4 @@
-const modals = () => {
+function modals ()  {
   const bindModals = (triggerSelector, modalSelector, closeSelector, closeClckOverlay = true) => {
     const trigger = document.querySelectorAll(triggerSelector),
       modal = document.querySelector(modalSelector),
@@ -68,4 +68,4 @@ const modals = () => {
   bindModals('.a__signin', '.popup__signin', '.popup__signin .popup__close')
 
 }
-export default modals
+// export default modals

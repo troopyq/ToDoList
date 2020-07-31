@@ -1,6 +1,6 @@
-import updateData from './updateData.js';
+// import updateData from './updateData.js';
 
-const removeList = () => {
+function removeList ()  {
 
   document.body.addEventListener('click', e => {
     let target = e.target
@@ -76,4 +76,4 @@ const removeList = () => {
 
 }
 
-export default removeList
+// export default removeList
